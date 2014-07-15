@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sample</string>
+    <string name="hello_world">こんにちは世界</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_content">新規のテキストView</string>
+    <string name="activity_sub">サブのアクティビティ</string>
+    <string name="btn_move_sub_activity_label">サブアクティビティへ</string>
+    <string name="btn_move_activity_label">アクティビティへ</string>
+    <string name="tag_activity_main">ActivityMain</string>
+    <string name="tag_activity_sub">ActivitySub</string>
+
+</resources>
