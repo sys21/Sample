@@ -8,7 +8,6 @@
     <string name="activity_sub">サブのアクティビティ</string>
     <string name="btn_move_sub_activity_label">サブアクティビティへ</string>
     <string name="btn_move_activity_label">アクティビティへ</string>
-    <string name="tag_activity_main">ActivityMain</string>
-    <string name="tag_activity_sub">ActivitySub</string>
+    <string name="edit_text_label">編集したテキストが反映されます</string>
 
 </resources>
