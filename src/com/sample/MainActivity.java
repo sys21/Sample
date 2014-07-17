@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 public class MainActivity extends ActionBarActivity {
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		outputLog("ÅöMainActivity#onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -63,8 +63,8 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+		public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
+			final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			return rootView;
 		}
 	}

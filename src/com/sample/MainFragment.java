@@ -3,6 +3,8 @@
  */
 package com.sample;
 
+import java.util.Calendar;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 /**
  * @author 修平
@@ -20,13 +23,13 @@ import android.widget.TextView;
  */
 public class MainFragment extends Fragment {
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		final View view = inflater.inflate(R.layout.fragment_main, container);
+	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
+		final View fragmentView = inflater.inflate(R.layout.fragment_main, container);
 		// SubActivityへの遷移ボタン
-		final Button btn = (Button) view.findViewById(R.id.btn_move_sub_activity);
+		final Button btn = (Button) fragmentView.findViewById(R.id.btn_move_sub_activity);
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				// インテントのインスタンス生成
 				final Intent intent = new Intent(getActivity(), SubActivity.class);
 				// 次画面のアクティビティ起動
@@ -34,7 +37,7 @@ public class MainFragment extends Fragment {
 			}
 		});
 		// EditText
-		final EditText editText = (EditText) view.findViewById(R.id.edit_text);
+		final EditText editText = (EditText) fragmentView.findViewById(R.id.edit_text);
 		editText.setOnFocusChangeListener(new OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(final View v, final boolean hasFocus) {
@@ -42,11 +45,40 @@ public class MainFragment extends Fragment {
 					// フォーカス時
 				} else {
 					// フォーカスアウト時
-					final TextView textView = (TextView) view.findViewById(R.id.edit_text_label);
+					final TextView textView = (TextView) fragmentView.findViewById(R.id.label_edit_text);
 					textView.setText(((EditText) v).getText().toString());
 				}
 			}
 		});
+		// ダイアログ表示ボタン
+		final Button btnDialog = (Button) fragmentView.findViewById(R.id.btn_dialog_open);
+		btnDialog.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				showTimePickerDialog(fragmentView);
+			}
+		});
 		return super.onCreateView(inflater, container, savedInstanceState);
+	}
+
+	/**
+	 * タイムピッカーダイアログ表示
+	 */
+	private void showTimePickerDialog(final View fragmentView) {
+		// 現在時刻を取得
+		final Calendar calendar = Calendar.getInstance();
+		final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+		final int minute = calendar.get(Calendar.MINUTE);
+		// 時間選択ダイアログの生成
+		final TimePickerDialog timepick = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+			@Override
+			public void onTimeSet(final TimePicker view, final int hourOfDay, final int minute) {
+				// 設定 ボタンクリック時の処理
+				final TextView textView = (TextView) fragmentView.findViewById(R.id.label_dialog_text);
+				textView.setText(String.format("%02d : %02d", hourOfDay, minute));
+			}
+		}, hour, minute, true);
+		// 表示
+		timepick.show();
 	}
 }

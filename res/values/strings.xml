@@ -9,5 +9,7 @@
     <string name="btn_move_sub_activity_label">サブアクティビティへ</string>
     <string name="btn_move_activity_label">アクティビティへ</string>
     <string name="edit_text_label">編集したテキストが反映されます</string>
+    <string name="dialog_setting_label">ダイアログで設定した値が反映されます</string>
+    <string name="dialog_btn_label">ダイアログを開く</string>
 
 </resources>

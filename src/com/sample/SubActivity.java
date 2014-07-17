@@ -17,7 +17,7 @@ import android.widget.Button;
  */
 public class SubActivity extends Activity {
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		outputLog("ÅöSubActivity#onCreate()");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sub);
@@ -25,7 +25,7 @@ public class SubActivity extends Activity {
 		final SubActivity self = this;
 		btn.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				final Intent intent = new Intent(self, MainActivity.class);
 				startActivity(intent);
 				finish();
