@@ -50,4 +50,11 @@
         android:layout_height="wrap_content"
         android:text="@string/dialog_btn_label" />
 
+    <View style="@style/border_black" />
+
+    <TextView
+        android:id="@+id/label_count_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

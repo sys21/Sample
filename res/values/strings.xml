@@ -11,5 +11,6 @@
     <string name="edit_text_label">編集したテキストが反映されます</string>
     <string name="dialog_setting_label">ダイアログで設定した値が反映されます</string>
     <string name="dialog_btn_label">ダイアログを開く</string>
+    <string name="time_up">TimeUp</string>
 
 </resources>

@@ -7,6 +7,7 @@ import java.util.Calendar;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,9 @@ import android.widget.TimePicker;
  * 
  */
 public class MainFragment extends Fragment {
+	private TextView countDownView;
+	private MyCountDownTimer myCountDownTimer;
+
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		final View fragmentView = inflater.inflate(R.layout.fragment_main, container);
@@ -58,6 +62,10 @@ public class MainFragment extends Fragment {
 				showTimePickerDialog(fragmentView);
 			}
 		});
+		// カウントダウンView
+		countDownView = (TextView) fragmentView.findViewById(R.id.label_count_down);
+		myCountDownTimer = new MyCountDownTimer(10000l, 1000l);
+		myCountDownTimer.start();
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 
@@ -80,5 +88,25 @@ public class MainFragment extends Fragment {
 		}, hour, minute, true);
 		// 表示
 		timepick.show();
+	}
+
+	/**
+	 * カウントダウンタイマー
+	 */
+	private class MyCountDownTimer extends CountDownTimer {
+		MyCountDownTimer(final long millisInFuture, final long countDownInterval) {
+			super(millisInFuture, countDownInterval);
+		}
+
+		@Override
+		public void onTick(final long millisUntilFinished) {
+			countDownView.setText(String.format("%s:%s", Long.toString(millisUntilFinished / 1000 / 60),
+					Long.toString(millisUntilFinished / 1000 % 60)));
+		}
+
+		@Override
+		public void onFinish() {
+			countDownView.setText(getResources().getString(R.string.time_up));
+		}
 	}
 }
