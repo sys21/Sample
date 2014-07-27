@@ -17,6 +17,9 @@ public class MainActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction().add(R.id.container, new MainFragment()).commit();
 		}
+		// ブランチ
+		System.out.println("ブランチ");
+		System.out.println("ブランチ");
 	}
 
 	@Override
