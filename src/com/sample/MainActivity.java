@@ -17,6 +17,8 @@ public class MainActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction().add(R.id.container, new MainFragment()).commit();
 		}
+		// GITÇÃê‡ñæÇÃÇΩÇﬂÇ…í«â¡
+		System.out.println("GIT test");
 	}
 
 	@Override
