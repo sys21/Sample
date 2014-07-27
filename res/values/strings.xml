@@ -12,5 +12,7 @@
     <string name="dialog_setting_label">ダイアログで設定した値が反映されます</string>
     <string name="dialog_btn_label">ダイアログを開く</string>
     <string name="time_up">TimeUp</string>
+    <string name="alert_start_label">音を鳴らす</string>
+    <string name="alert_stop_label">音を止める</string>
 
 </resources>

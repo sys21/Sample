@@ -6,6 +6,7 @@ package com.sample;
 import java.util.Calendar;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ import android.widget.TimePicker;
 public class MainFragment extends Fragment {
 	private TextView countDownView;
 	private MyCountDownTimer myCountDownTimer;
+	private MediaPlayer mediaPlayer;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
@@ -66,6 +68,29 @@ public class MainFragment extends Fragment {
 		countDownView = (TextView) fragmentView.findViewById(R.id.label_count_down);
 		myCountDownTimer = new MyCountDownTimer(10000l, 1000l);
 		myCountDownTimer.start();
+		// 音を鳴らす（止める）ボタン
+		final Button btnAlert = (Button) fragmentView.findViewById(R.id.btn_alert);
+		btnAlert.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (mediaPlayer == null) {
+					mediaPlayer = MediaPlayer.create(getActivity(), R.raw.alert);
+					mediaPlayer.setLooping(true);
+					mediaPlayer.start();
+					return;
+				}
+				if (mediaPlayer.isPlaying() == false) {
+					mediaPlayer.start();
+					((Button) v).setText(getResources().getString(R.string.alert_stop_label));
+					MediaPlayer bgm = MediaPlayer.create(getActivity(), R.raw.alert);
+					bgm.setLooping(true);
+					bgm.start();
+				} else {
+					mediaPlayer.stop();
+					((Button) v).setText(getResources().getString(R.string.alert_start_label));
+				}
+			}
+		});
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 

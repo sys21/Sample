@@ -27,8 +27,9 @@ public class MainActivity extends ActionBarActivity {
 
 	@Override
 	protected void onResume() {
-		outputLog("šMainActivity#onResume()");
 		super.onResume();
+		// ‚±‚±‚©‚ç“Æ©À‘•‚ğs‚¤
+		outputLog("šMainActivity#onResume()");
 	}
 
 	@Override

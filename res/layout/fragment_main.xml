@@ -57,4 +57,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <View style="@style/border_black" />
+
+    <Button
+        android:id="@+id/btn_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alert_start_label" />
+
 </LinearLayout>
